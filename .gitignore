@@ -1,0 +1,12 @@
+node_modules/
+
+# OS 생성 파일
+.DS_Store
+Thumbs.db
+
+# 편집기 설정
+.vscode/
+.idea/
+
+# dist/output.css는 의도적으로 커밋합니다.
+# GitHub Pages는 저장소를 빌드하지 않으므로 산출물이 저장소에 있어야 배포됩니다.

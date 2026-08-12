@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>김개발 | 프론트엔드 개발자 이력서</title>
+    <meta
+      name="description"
+      content="사용자 경험을 고민하는 프론트엔드 개발자 김개발의 웹 이력서입니다. 경력, 기술 스택, 프로젝트를 소개합니다."
+    />
+    <meta name="author" content="김개발" />
+    <meta name="theme-color" content="#4f46e5" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:title" content="김개발 | 프론트엔드 개발자 이력서" />
+    <meta
+      property="og:description"
+      content="사용자 경험을 고민하는 프론트엔드 개발자 김개발의 웹 이력서입니다."
+    />
+    <meta property="og:image" content="./assets/profile.svg" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="김개발 | 프론트엔드 개발자 이력서" />
+    <meta
+      name="twitter:description"
+      content="사용자 경험을 고민하는 프론트엔드 개발자 김개발의 웹 이력서입니다."
+    />
+    <meta name="twitter:image" content="./assets/profile.svg" />
+
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./dist/output.css" />
+
+    <!--
+      다크 모드 초기화는 렌더링 전에 실행되어야 화면 깜빡임(FOUC)이 없습니다.
+      따라서 이 스니펫만 defer 없이 인라인으로 둡니다. (토글 동작은 js/theme.js 담당)
+    -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (saved === 'dark' || (!saved && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {
+          /* localStorage 접근 불가 환경(사생활 보호 모드 등)에서는 기본값 사용 */
+        }
+      })();
+    </script>
+
+    <script src="./js/theme.js" defer></script>
+    <script src="./js/main.js" type="module" defer></script>
+
+    <!-- 구조화 데이터 -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "김개발",
+        "jobTitle": "프론트엔드 개발자",
+        "email": "mailto:gaebal.kim@example.com",
+        "url": "https://example.com",
+        "sameAs": ["https://github.com/example", "https://linkedin.com/in/example"],
+        "knowsAbout": ["JavaScript", "TypeScript", "React", "Tailwind CSS", "Node.js"],
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "한국대학교"
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <a href="#main" class="skip-link no-print">본문 바로가기</a>
+
+    <!-- ================= 고정 네비게이션 ================= -->
+    <header
+      class="no-print fixed inset-x-0 top-0 z-40 border-b border-slate-200 bg-white/80 backdrop-blur dark:border-slate-800 dark:bg-slate-900/80"
+    >
+      <nav class="container-page flex h-16 items-center justify-between" aria-label="주요 메뉴">
+        <a href="#home" class="text-lg font-bold text-slate-900 dark:text-white">김개발</a>
+
+        <!-- 데스크톱 메뉴 -->
+        <ul id="nav-menu" class="hidden items-center gap-1 md:flex">
+          <li><a href="#about" class="nav-link">소개</a></li>
+          <li><a href="#skills" class="nav-link">기술</a></li>
+          <li><a href="#experience" class="nav-link">경력</a></li>
+          <li><a href="#projects" class="nav-link">프로젝트</a></li>
+          <li><a href="#education" class="nav-link">학력</a></li>
+          <li><a href="#contact" class="nav-link">연락처</a></li>
+        </ul>
+
+        <div class="flex items-center gap-1">
+          <!-- 다크 모드 토글 -->
+          <button id="theme-toggle" type="button" class="icon-btn" aria-label="다크 모드 전환">
+            <svg
+              id="theme-icon-sun"
+              class="hidden h-5 w-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+              />
+            </svg>
+            <svg
+              id="theme-icon-moon"
+              class="hidden h-5 w-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+          </button>
+
+          <!-- 모바일 햄버거 -->
+          <button
+            id="menu-toggle"
+            type="button"
+            class="icon-btn md:hidden"
+            aria-label="메뉴 열기"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <svg
+              class="h-5 w-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <!-- 모바일 메뉴 -->
+      <div id="mobile-menu" class="hidden border-t border-slate-200 md:hidden dark:border-slate-800">
+        <ul class="container-page flex flex-col py-2">
+          <li><a href="#about" class="nav-link block">소개</a></li>
+          <li><a href="#skills" class="nav-link block">기술</a></li>
+          <li><a href="#experience" class="nav-link block">경력</a></li>
+          <li><a href="#projects" class="nav-link block">프로젝트</a></li>
+          <li><a href="#education" class="nav-link block">학력</a></li>
+          <li><a href="#contact" class="nav-link block">연락처</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ================= Hero ================= -->
+      <section id="home" class="section pt-28 md:pt-32">
+        <div class="container-page flex flex-col items-center gap-8 sm:flex-row sm:items-center">
+          <img
+            src="./assets/profile.svg"
+            alt="김개발 프로필 사진"
+            width="128"
+            height="128"
+            class="h-32 w-32 shrink-0 rounded-full ring-4 ring-brand-100 dark:ring-slate-800"
+          />
+
+          <div class="text-center sm:text-left">
+            <p class="mb-2 text-sm font-semibold uppercase tracking-widest text-brand-600 dark:text-brand-300">
+              Frontend Developer
+            </p>
+            <h1 class="text-3xl font-bold tracking-tight md:text-5xl">김개발</h1>
+            <p class="mt-3 text-lg text-slate-600 dark:text-slate-400">
+              사용자 경험을 고민하는 프론트엔드 개발자
+            </p>
+
+            <ul class="mt-5 flex items-center justify-center gap-2 sm:justify-start">
+              <li>
+                <a href="mailto:gaebal.kim@example.com" class="icon-btn" aria-label="이메일 보내기">
+                  <svg
+                    class="h-5 w-5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                    <path d="m2 7 10 6 10-6" />
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/example"
+                  class="icon-btn"
+                  aria-label="GitHub 프로필 (새 탭)"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.16.58.67.48A10 10 0 0 0 22 12c0-5.52-4.48-10-10-10z"
+                    />
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://linkedin.com/in/example"
+                  class="icon-btn"
+                  aria-label="LinkedIn 프로필 (새 탭)"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                      d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.71h.05c.53-.95 1.83-1.96 3.77-1.96 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.6c0-1.34-.03-3.07-1.9-3.07-1.9 0-2.19 1.46-2.19 2.97V21H9z"
+                    />
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 맨 위로 버튼 노출 기준점 (히어로를 벗어나면 버튼이 나타납니다) -->
+      <div id="scroll-sentinel" class="h-px" aria-hidden="true"></div>
+
+      <!-- ================= About ================= -->
+      <section id="about" class="section reveal">
+        <div class="container-page">
+          <h2 class="section-title">소개</h2>
+          <p class="section-subtitle">About</p>
+          <div class="max-w-3xl space-y-4 leading-relaxed">
+            <p>
+              웹의 기본기를 중요하게 생각하는 5년 차 프론트엔드 개발자입니다. 화면을 만드는 일을
+              넘어, 사용자가 어디서 막히는지 관찰하고 그 지점을 개선하는 과정을 좋아합니다.
+            </p>
+            <p>
+              커머스와 사내 어드민 도메인에서 React 기반 서비스를 개발하고 운영했습니다. 컴포넌트를
+              재사용 가능한 단위로 쪼개고, 디자인 시스템을 팀에 정착시키는 작업을 주로 맡았습니다.
+            </p>
+            <p>
+              접근성과 성능은 나중에 붙이는 기능이 아니라 처음부터 지켜야 할 기준이라고 생각합니다.
+              키보드만으로 쓸 수 있는지, 느린 네트워크에서도 쓸 만한지를 항상 확인합니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Skills ================= -->
+      <section id="skills" class="section reveal bg-slate-50 dark:bg-slate-800/30">
+        <div class="container-page">
+          <h2 class="section-title">기술 스택</h2>
+          <p class="section-subtitle">Skills</p>
+
+          <div class="grid gap-6 md:grid-cols-2 lg:gap-8">
+            <article class="card">
+              <h3 class="mb-4 text-lg font-semibold">Frontend</h3>
+              <ul class="flex flex-wrap gap-2">
+                <li class="badge">HTML5</li>
+                <li class="badge">CSS3</li>
+                <li class="badge">JavaScript (ES6+)</li>
+                <li class="badge">TypeScript</li>
+                <li class="badge">React</li>
+                <li class="badge">Next.js</li>
+                <li class="badge">Tailwind CSS</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <h3 class="mb-4 text-lg font-semibold">Backend</h3>
+              <ul class="flex flex-wrap gap-2">
+                <li class="badge">Node.js</li>
+                <li class="badge">Express</li>
+                <li class="badge">REST API</li>
+                <li class="badge">MySQL</li>
+                <li class="badge">MongoDB</li>
+              </ul>
+            </article>
+
+            <article class="card md:col-span-2">
+              <h3 class="mb-4 text-lg font-semibold">Tools &amp; Collaboration</h3>
+              <ul class="flex flex-wrap gap-2">
+                <li class="badge">Git / GitHub</li>
+                <li class="badge">Vite</li>
+                <li class="badge">Jest</li>
+                <li class="badge">Figma</li>
+                <li class="badge">Jira</li>
+                <li class="badge">Notion</li>
+                <li class="badge">GitHub Actions</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Experience ================= -->
+      <section id="experience" class="section reveal">
+        <div class="container-page">
+          <h2 class="section-title">경력</h2>
+          <p class="section-subtitle">Experience</p>
+
+          <div class="timeline">
+            <article class="timeline-item">
+              <p class="text-sm text-slate-500 dark:text-slate-400">2023.03 ~ 재직 중</p>
+              <h3 class="mt-1 text-lg font-semibold">
+                주식회사 넥스트커머스
+                <span class="block text-sm font-normal text-brand-600 dark:text-brand-300">
+                  프론트엔드 개발자 / 웹 프론트엔드팀
+                </span>
+              </h3>
+              <ul class="mt-3 list-disc space-y-1.5 pl-5 text-slate-600 dark:text-slate-400">
+                <li>상품 상세 페이지를 React로 재구축해 초기 렌더링 시간을 40% 단축했습니다.</li>
+                <li>
+                  사내 디자인 시스템 컴포넌트 30여 개를 설계·문서화해 신규 화면 개발 기간을 절반으로
+                  줄였습니다.
+                </li>
+                <li>주니어 개발자 2명의 온보딩과 코드 리뷰를 담당했습니다.</li>
+              </ul>
+            </article>
+
+            <article class="timeline-item">
+              <p class="text-sm text-slate-500 dark:text-slate-400">2021.01 ~ 2023.02</p>
+              <h3 class="mt-1 text-lg font-semibold">
+                스타트업 그로우랩
+                <span class="block text-sm font-normal text-brand-600 dark:text-brand-300">
+                  웹 개발자 / 프로덕트팀
+                </span>
+              </h3>
+              <ul class="mt-3 list-disc space-y-1.5 pl-5 text-slate-600 dark:text-slate-400">
+                <li>사내 관리자 도구를 0부터 설계해 운영 인력의 수작업 업무를 자동화했습니다.</li>
+                <li>Node.js 기반 REST API를 함께 개발하며 프론트엔드-백엔드 연동을 담당했습니다.</li>
+                <li>웹 접근성 점검을 도입해 주요 화면의 키보드 탐색 문제를 개선했습니다.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Projects ================= -->
+      <section id="projects" class="section reveal bg-slate-50 dark:bg-slate-800/30">
+        <div class="container-page">
+          <h2 class="section-title">프로젝트</h2>
+          <p class="section-subtitle">Projects</p>
+
+          <div class="grid gap-6 md:grid-cols-2 lg:gap-8">
+            <article class="card">
+              <h3 class="text-lg font-semibold">웹 이력서 템플릿</h3>
+              <p class="mt-2 flex-1 text-slate-600 dark:text-slate-400">
+                빌드 도구를 최소화한 정적 이력서 템플릿입니다. 다크 모드, 반응형, 인쇄용 레이아웃을
+                지원합니다.
+              </p>
+              <ul class="mt-4 flex flex-wrap gap-1.5">
+                <li class="badge-brand">HTML</li>
+                <li class="badge-brand">Tailwind CSS</li>
+                <li class="badge-brand">JavaScript</li>
+              </ul>
+              <p class="mt-4 flex gap-4 text-sm font-medium">
+                <a
+                  href="https://github.com/example/web-resume"
+                  class="text-brand-600 hover:underline dark:text-brand-300"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GitHub</a
+                >
+                <a
+                  href="https://example.github.io/web-resume"
+                  class="text-brand-600 hover:underline dark:text-brand-300"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >데모</a
+                >
+              </p>
+            </article>
+
+            <article class="card">
+              <h3 class="text-lg font-semibold">할 일 관리 대시보드</h3>
+              <p class="mt-2 flex-1 text-slate-600 dark:text-slate-400">
+                드래그 앤 드롭 보드와 통계 화면을 제공하는 개인 생산성 도구입니다. 오프라인 저장을
+                지원합니다.
+              </p>
+              <ul class="mt-4 flex flex-wrap gap-1.5">
+                <li class="badge-brand">React</li>
+                <li class="badge-brand">TypeScript</li>
+                <li class="badge-brand">IndexedDB</li>
+              </ul>
+              <p class="mt-4 flex gap-4 text-sm font-medium">
+                <a
+                  href="https://github.com/example/task-board"
+                  class="text-brand-600 hover:underline dark:text-brand-300"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GitHub</a
+                >
+                <a
+                  href="https://example.github.io/task-board"
+                  class="text-brand-600 hover:underline dark:text-brand-300"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >데모</a
+                >
+              </p>
+            </article>
+
+            <article class="card md:col-span-2">
+              <h3 class="text-lg font-semibold">오픈 API 날씨 위젯</h3>
+              <p class="mt-2 flex-1 text-slate-600 dark:text-slate-400">
+                공공 데이터 API를 활용해 지역별 날씨를 보여주는 임베드 위젯입니다. 의존성 없이 순수
+                JavaScript로 작성했으며, 번들 크기는 8KB 미만입니다.
+              </p>
+              <ul class="mt-4 flex flex-wrap gap-1.5">
+                <li class="badge-brand">JavaScript</li>
+                <li class="badge-brand">Web Components</li>
+                <li class="badge-brand">Open API</li>
+              </ul>
+              <p class="mt-4 flex gap-4 text-sm font-medium">
+                <a
+                  href="https://github.com/example/weather-widget"
+                  class="text-brand-600 hover:underline dark:text-brand-300"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GitHub</a
+                >
+                <a
+                  href="https://example.github.io/weather-widget"
+                  class="text-brand-600 hover:underline dark:text-brand-300"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >데모</a
+                >
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Education ================= -->
+      <section id="education" class="section reveal">
+        <div class="container-page">
+          <h2 class="section-title">학력</h2>
+          <p class="section-subtitle">Education</p>
+
+          <div class="timeline">
+            <article class="timeline-item">
+              <p class="text-sm text-slate-500 dark:text-slate-400">2016.03 ~ 2020.02</p>
+              <h3 class="mt-1 text-lg font-semibold">
+                한국대학교
+                <span class="block text-sm font-normal text-brand-600 dark:text-brand-300">
+                  컴퓨터공학과 학사 졸업
+                </span>
+              </h3>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Contact ================= -->
+      <section id="contact" class="section reveal bg-slate-50 dark:bg-slate-800/30">
+        <div class="container-page text-center">
+          <h2 class="section-title">연락처</h2>
+          <p class="section-subtitle">Contact</p>
+          <p class="mx-auto max-w-xl">
+            새로운 기회나 협업 제안은 언제든 환영합니다. 편하게 메일 주세요.
+          </p>
+          <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <a href="mailto:gaebal.kim@example.com" class="btn-primary">
+              gaebal.kim@example.com
+            </a>
+            <button id="print-button" type="button" class="btn-ghost no-print">
+              PDF로 저장
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-slate-200 py-8 dark:border-slate-800">
+      <div class="container-page text-center text-sm text-slate-500 dark:text-slate-400">
+        <p>&copy; 2026 김개발. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!--
+      맨 위로 버튼.
+      flex와 hidden을 함께 둡니다. Tailwind 출력 순서상 hidden이 이기므로 기본은 숨김이고,
+      js/main.js가 hidden을 떼면 flex 중앙 정렬이 적용됩니다.
+    -->
+    <button
+      id="to-top"
+      type="button"
+      class="no-print fixed bottom-6 right-6 z-30 flex hidden h-11 w-11 items-center justify-center rounded-full bg-brand-600 text-white shadow-lg transition hover:bg-brand-700"
+      aria-label="맨 위로 이동"
+    >
+      <svg
+        class="h-5 w-5"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M12 19V5M5 12l7-7 7 7" />
+      </svg>
+    </button>
+  </body>
+</html>

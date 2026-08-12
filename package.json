@@ -1,0 +1,21 @@
+{
+  "name": "claude-code-mastery",
+  "version": "1.0.0",
+  "description": "HTML/CSS/JavaScript/Tailwind CSS로 만든 개발자 웹 이력서",
+  "private": true,
+  "scripts": {
+    "dev": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify"
+  },
+  "keywords": [
+    "resume",
+    "portfolio",
+    "tailwindcss"
+  ],
+  "author": "",
+  "license": "MIT",
+  "type": "commonjs",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}
